@@ -123,16 +123,23 @@
       // supabase에 저장할 테이블명을 실제로 만든 테이블명으로 변경하세요.
       const TABLE_NAME = "inquiries";
 
-      const { error } = await supabase.from(TABLE_NAME).insert([payload]);
+      try {
+        const { data, error } = await supabase.from(TABLE_NAME).insert([payload]);
 
-      if (error) {
-        console.error("문의 전송 오류", error);
-        alert("전송에 실패했습니다. 콘솔을 확인해 주세요.");
-        return;
+        if (error) throw error;
+
+        console.info("문의 저장 성공", data);
+        alert("문의가 성공적으로 전송되었습니다. 빠르게 연락드리겠습니다.");
+        form.reset();
+      } catch (err) {
+        console.error("문의 전송 오류", err);
+
+        const message = err?.message ?? String(err);
+        const details = err?.details ? `\n${err.details}` : "";
+        const hint = err?.hint ? `\n${err.hint}` : "";
+
+        alert(`전송에 실패했습니다: ${message}${details}${hint}\n(콘솔을 확인해 주세요.)`);
       }
-
-      alert("문의가 성공적으로 전송되었습니다. 빠르게 연락드리겠습니다.");
-      form.reset();
     });
   </script>
 </body>
