@@ -263,7 +263,72 @@ a {
   color: var(--muted);
 }
 
-/* 세무사 프로필 섹션 */
+/* 홈 화면 간단 소개 */
+.intro-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.intro-image {
+  flex-shrink: 0;
+}
+
+.intro-content {
+  flex: 1;
+}
+
+.intro-name {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  color: var(--primary);
+}
+
+.intro-desc {
+  margin: 0 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.intro-motto {
+  margin: 0 0 1.2rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* 세무사 프로필 섹션 (profile.html) */
 .profile-card {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -404,5 +469,126 @@ a {
 
   .profile-title {
     text-align: center;
+  }
+
+  .intro-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .intro-name,
+  .intro-desc {
+    text-align: center;
+  }
+
+  .intro-motto {
+    border-left: none;
+    border-top: 3px solid var(--accent);
+    padding-left: 0;
+    padding-top: 0.8rem;
+  }
+}
+
+/* 프로필 페이지 전용 스타일 */
+.profile-hero {
+  padding: 3rem 0 2rem;
+}
+
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.achievement-card {
+  background: var(--surface);
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius);
+  text-align: center;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 160ms ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+}
+
+.achievement-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.achievement-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.process-step {
+  text-align: center;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 8px 20px rgba(27, 45, 109, 0.25);
+}
+
+.process-step h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+  color: var(--primary);
+}
+
+.process-step p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.cta-section {
+  text-align: center;
+}
+
+.cta-section h2 {
+  margin-bottom: 0.8rem;
+}
+
+.cta-section p {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 680px) {
+  .achievements {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
   }
 }
