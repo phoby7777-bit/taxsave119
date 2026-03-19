@@ -103,5 +103,37 @@
       <p>본 사이트는 정보 제공을 목적으로 하며, 법률적 효력은 없습니다.</p>
     </div>
   </footer>
+
+  <script type="module">
+    // Supabase 클라이언트 생성
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+    const SUPABASE_URL = "https://toionnagakjowyewpgti.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_Ipn09q2qEkm5hbspT5Ga7g_pypAx0KY";
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const form = document.getElementById("contactForm");
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      // supabase에 저장할 테이블명을 실제로 만든 테이블명으로 변경하세요.
+      const TABLE_NAME = "inquiries";
+
+      const { error } = await supabase.from(TABLE_NAME).insert([payload]);
+
+      if (error) {
+        console.error("문의 전송 오류", error);
+        alert("전송에 실패했습니다. 콘솔을 확인해 주세요.");
+        return;
+      }
+
+      alert("문의가 성공적으로 전송되었습니다. 빠르게 연락드리겠습니다.");
+      form.reset();
+    });
+  </script>
 </body>
 </html>
