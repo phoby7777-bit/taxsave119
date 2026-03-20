@@ -4,7 +4,12 @@
       "Bash(mkdir:*)",
       "Bash(rm:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: TaxSave119 website\n\n- Add main homepage (index.html)\n- Add tax attorney profile page (profile.html)\n- Add styling (styles.css)\n- Add Supabase setup (supabase-setup.sql)\n- Add SMS notification feature\n- Add responsive design\n- Add README and documentation\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git branch:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)"
     ],
     "deny": [],
     "ask": []
